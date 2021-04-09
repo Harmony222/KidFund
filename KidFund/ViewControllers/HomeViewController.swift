@@ -34,13 +34,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
              
         // setup children collection view layout
         let layout = childrenCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumLineSpacing = 40
-        layout.minimumInteritemSpacing = 40
-
-        layout.itemSize = CGSize(width: 80, height: 80)
+//        layout.minimumLineSpacing = 20
+//        layout.minimumInteritemSpacing = 20
+//
+        layout.itemSize = CGSize(width: 120, height: 120)
         // Do any additional setup after loading the view.
         
         // Get children of parent from database
+        getChildren()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getChildren()
+    }
+    
+    func getChildren() {
         let query = PFQuery(className: "Children")
         query.whereKey("parent", equalTo: PFUser.current()!)
         query.includeKeys(["name", "age"])
@@ -50,7 +59,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.childrenCollectionView.reloadData()
             }
         }
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func onParentButton(_ sender: Any) {
@@ -105,16 +113,27 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         return cell
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "childHomeSegue" {
+            print("loading child home")
+            let cell = sender as! UICollectionViewCell
+            let indexPath = childrenCollectionView.indexPath(for: cell)!
+            let selectedChild = userChildren[indexPath.item]
+//            print(selectedChild["name"]!)
+            let childHomeViewController = segue.destination as! ChildHomeViewController
+            childHomeViewController.selectedChild = selectedChild
+            
+            childrenCollectionView.deselectItem(at: indexPath, animated: true)
+            
+        }
     }
-    */
-
+    
 }
 
 

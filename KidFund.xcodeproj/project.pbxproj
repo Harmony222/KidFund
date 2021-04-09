@@ -20,6 +20,9 @@
 		FFD2FA62261FC65E0025B3AB /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2FA61261FC65E0025B3AB /* CustomView.swift */; };
 		FFD8B1AF261FD46200A60115 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8B1AE261FD46200A60115 /* CustomButton.swift */; };
 		FFD8B1B2261FD89B00A60115 /* ParentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8B1B1261FD89B00A60115 /* ParentHomeViewController.swift */; };
+		FFD8B1B6261FE24000A60115 /* AddChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8B1B5261FE24000A60115 /* AddChildViewController.swift */; };
+		FFD8B1B9261FE5FF00A60115 /* ParentChildDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8B1B8261FE5FF00A60115 /* ParentChildDetailsViewController.swift */; };
+		FFD8B1BC261FE94700A60115 /* ChildHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8B1BB261FE94700A60115 /* ChildHomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		FFD2FA61261FC65E0025B3AB /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		FFD8B1AE261FD46200A60115 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FFD8B1B1261FD89B00A60115 /* ParentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentHomeViewController.swift; sourceTree = "<group>"; };
+		FFD8B1B5261FE24000A60115 /* AddChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildViewController.swift; sourceTree = "<group>"; };
+		FFD8B1B8261FE5FF00A60115 /* ParentChildDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentChildDetailsViewController.swift; sourceTree = "<group>"; };
+		FFD8B1BB261FE94700A60115 /* ChildHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildHomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,9 @@
 				FFACD670261FB8F000EC4ADB /* LoginViewController.swift */,
 				FFACD673261FBBAA00EC4ADB /* CreateProfileViewController.swift */,
 				FFD2FA5A261FC4840025B3AB /* HomeViewController.swift */,
+				FFD8B1B5261FE24000A60115 /* AddChildViewController.swift */,
+				FFD8B1B8261FE5FF00A60115 /* ParentChildDetailsViewController.swift */,
+				FFD8B1BB261FE94700A60115 /* ChildHomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -244,7 +253,10 @@
 				FFD2D8CE261FC94A00E9820B /* ChildCollectionViewCell.swift in Sources */,
 				FFACD671261FB8F000EC4ADB /* LoginViewController.swift in Sources */,
 				FFD8B1B2261FD89B00A60115 /* ParentHomeViewController.swift in Sources */,
+				FFD8B1B6261FE24000A60115 /* AddChildViewController.swift in Sources */,
+				FFD8B1B9261FE5FF00A60115 /* ParentChildDetailsViewController.swift in Sources */,
 				FFD8B1AF261FD46200A60115 /* CustomButton.swift in Sources */,
+				FFD8B1BC261FE94700A60115 /* ChildHomeViewController.swift in Sources */,
 				FFD2FA62261FC65E0025B3AB /* CustomView.swift in Sources */,
 				FFACD652261FB75D00EC4ADB /* AppDelegate.swift in Sources */,
 				FFACD654261FB75D00EC4ADB /* SceneDelegate.swift in Sources */,

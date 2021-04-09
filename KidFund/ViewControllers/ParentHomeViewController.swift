@@ -26,7 +26,7 @@ class ParentHomeViewController: UIViewController,  UICollectionViewDataSource, U
         layout.minimumLineSpacing = 40
         layout.minimumInteritemSpacing = 40
 
-        layout.itemSize = CGSize(width: 80, height: 80)
+        layout.itemSize = CGSize(width: 120, height: 120)
         // Do any additional setup after loading the view.
     }
     
@@ -70,14 +70,26 @@ class ParentHomeViewController: UIViewController,  UICollectionViewDataSource, U
         
         return cell
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "parentChildDetailsSegue" {
+            print("loading parent child details")
+            let cell = sender as! UICollectionViewCell
+            let indexPath = childrenCollectionView.indexPath(for: cell)!
+            let selectedChild = userChildren[indexPath.item]
+//            print(selectedChild["name"]!)
+            let parentChildDetailsViewController = segue.destination as! ParentChildDetailsViewController
+            parentChildDetailsViewController.selectedChild = selectedChild
+            
+            childrenCollectionView.deselectItem(at: indexPath, animated: true)
+            
+        }
     }
-    */
+    
 
 }
