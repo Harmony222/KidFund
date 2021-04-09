@@ -65,33 +65,31 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
         cell.choreDescription.text = description
         cell.choreAmount.text = String(format: "$%.2f", amount)
 
-        cell.speakerImage.title = description
+
         let imageFile = chore["image"] as! PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
         cell.choreImageView.af.setImage(withURL: url)
         
-
-//        let tapGestureRecognizer = CustomTapGesture(target: self, action: #selector(self.imageTapped(_:)))
-//        cell.speakerImage.isUserInteractionEnabled = true
-//        cell.speakerImage.addGestureRecognizer(tapGestureRecognizer)
-//        tapGestureRecognizer.title = description
-
+        cell.speakButton.tag = indexPath.item
+        cell.speakButton.addTarget(self, action: #selector(speakButton), for: .touchUpInside)
+        
+        
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         return cell
     }
     
-    @IBAction func speakerTapped(_ sender: Any) {
-        
-    }
-    
-    func imageTapped(sender: CustomTapGesture)
-    {
-//        let tappedImage = tapGestureRecognizer.view as! UIImageView
-        speak(sender.title)
-        // Your action
-    }
+    @objc func speakButton(sender:UIButton) {
+        let indexpath1 = IndexPath(item: sender.tag, section: 0)
+
+        let ChildChore = self.childChores[indexpath1.item] as PFObject
+        let chore = ChildChore["chore"] as! PFObject
+        let description = chore["description"] as! String
+        speak(description)
+
+   }
+
     /*
     // MARK: - Navigation
 
@@ -104,8 +102,5 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
 
 }
 
-class CustomTapGesture: UITapGestureRecognizer {
-    var title = String()
-}
 
 
