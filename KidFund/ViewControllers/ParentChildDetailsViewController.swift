@@ -15,27 +15,28 @@ class ParentChildDetailsViewController: UIViewController, UICollectionViewDataSo
     var selectedChild = PFObject(className: "Children");
     @IBOutlet weak var childNameLabel: UILabel!
     var childChores = [PFObject]()
+    var childGoals = [PFObject]()
     
     @IBOutlet weak var choreCollectionView: UICollectionView!
+    @IBOutlet weak var goalsCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let name = selectedChild["name"]
         childNameLabel.text = name as? String
+        
         choreCollectionView.delegate = self
         choreCollectionView.dataSource = self
-        
-//        self.childChores = selectedChild["chores"] as! [PFObject]
-//        for chore in childChores {
-//            print(chore)
-//        }
-  
 
-        // Do any additional setup after loading the view.
+        goalsCollectionView.delegate = self
+        goalsCollectionView.dataSource = self
+
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getChores()
+        getGoals()
     }
     
     func getChores() {
@@ -49,31 +50,67 @@ class ParentChildDetailsViewController: UIViewController, UICollectionViewDataSo
             }
         }
     }
+    
+    func getGoals() {
+        let query = PFQuery(className: "ChildGoals")
+        query.whereKey("child", equalTo: selectedChild)
+        query.includeKeys(["goal", "goal.description", "goal.amount", "goal.image"])
+        query.findObjectsInBackground { (goals, error) in
+            if goals != nil {
+                self.childGoals = goals!
+                self.goalsCollectionView.reloadData()
+            }
+        }
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return childChores.count
+        if collectionView == self.choreCollectionView {
+            return childChores.count
+        }
+        return childGoals.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChoreCollectionViewCell", for: indexPath) as! ChoreCollectionViewCell
+        if collectionView == self.choreCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChoreCollectionViewCell", for: indexPath) as! ChoreCollectionViewCell
 
-        let ChildChore = self.childChores[indexPath.item] as PFObject
-        print(ChildChore)
+            let ChildChore = self.childChores[indexPath.item] as PFObject
+            let chore = ChildChore["chore"] as! PFObject
+            
+            let description = chore["description"] as! String
+            let amount = chore["amount"] as! Double
+
+            cell.choreDescription.text = description
+            cell.choreAmount.text = String(format: "$%.2f", amount)
+
+
+            let imageFile = chore["image"] as! PFFileObject
+            let urlString = imageFile.url!
+            let url = URL(string: urlString)!
+            cell.choreImageView.af.setImage(withURL: url)
+
+
+            cell.layer.cornerRadius = 10
+            cell.layer.masksToBounds = true
+            return cell
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GoalCollectionViewCell", for: indexPath) as! GoalCollectionViewCell
+
+        let ChildGoal = self.childGoals[indexPath.item] as PFObject
+        let goal = ChildGoal["goal"] as! PFObject
         
-        let chore = ChildChore["chore"] as! PFObject
-        print(chore)
-        
-//        let comments = (post["comments"] as? [PFObject]) ?? []
-        let description = chore["description"] as! String
-        let amount = chore["amount"] as! Double
+        let description = goal["description"] as! String
+        let amount = goal["amount"] as! Double
 
-        cell.choreDescription.text = description
-        cell.choreAmount.text = String(format: "$%.2f", amount)
+        cell.goalDescriptionLabel.text = description
+        cell.goalAmountLabel.text = String(format: "$%.2f", amount)
 
 
-        let imageFile = chore["image"] as! PFFileObject
+        let imageFile = goal["image"] as! PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
-        cell.choreImageView.af.setImage(withURL: url)
+        cell.goalImageView.af.setImage(withURL: url)
 
 
         cell.layer.cornerRadius = 10
@@ -93,8 +130,15 @@ class ParentChildDetailsViewController: UIViewController, UICollectionViewDataSo
 //            print(selectedChild["name"]!)
             let addChoresViewController = segue.destination as! AddChoresViewController
             addChoresViewController.selectedChild = selectedChild
-            
-            
+                      
+        }
+        if segue.identifier == "addGoalsSegue" {
+            print("loading add goals")
+
+//            print(selectedChild["name"]!)
+            let addGoalsViewController = segue.destination as! AddGoalsViewController
+            addGoalsViewController.selectedChild = selectedChild
+                      
         }
     }
     

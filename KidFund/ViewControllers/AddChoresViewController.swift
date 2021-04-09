@@ -19,7 +19,6 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
     var chores = [PFObject]()
     var numberOfCells: Int!
     var selectedChores = [PFObject]()
-    var customAmounts = [Double]()
 
     
     override func viewDidLoad() {
@@ -74,15 +73,25 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
 
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
+        
+        if cell.isSelected {
+            //put border logic
+            cell.layer.borderColor = UIColor(named: "AppGreenBlue")?.cgColor
+            cell.layer.borderWidth = 2
+        }else {
+            // remove border
+            cell.layer.borderColor = UIColor.clear.cgColor
+            cell.layer.borderWidth = 2
+        }
         return cell
     }
     
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //https://stackoverflow.com/questions/49935711/adding-borders-on-collectionview-cell
         print(indexPath.item)
         let cell = collectionView.cellForItem(at: indexPath) as! ChoreCollectionViewCell
-        let myColor = UIColor(red: 0.365, green: 0.953, blue: 0.884, alpha: 1.00)
-        cell.layer.borderColor = myColor.cgColor
+        cell.layer.borderColor = UIColor(named: "AppGreenBlue")?.cgColor
         cell.layer.borderWidth = 2
         cell.isSelected = true
         let chore = chores[indexPath.item]
@@ -124,11 +133,18 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
                     print("error adding child's chore")
                 }
             }
-            
         }
+//        choreCollectionView.indexPathsForSelectedItems?.forEach({ choreCollectionView.deselectItem(at: $0, animated: false) })
+        selectedChores.removeAll()
+        choreCollectionView.deselectAllItems(animated: true)
+        self.choreCollectionView.reloadData()
+
     }
     
+    
 
+// Chores images reference
+// <a href='https://www.freepik.com/vectors/kids'>Kids vector created by macrovector - www.freepik.com</a>
     
     /*
     // MARK: - Navigation
@@ -140,4 +156,12 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     */
 
+}
+
+extension UICollectionView {
+
+    func deselectAllItems(animated: Bool) {
+        guard let selectedItems = indexPathsForSelectedItems else { return }
+        for indexPath in selectedItems { deselectItem(at: indexPath, animated: animated) }
+    }
 }
