@@ -3,8 +3,10 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -67,6 +69,14 @@
                                     <segue destination="mMp-OK-70n" kind="presentation" identifier="createProfileSegue" id="HrX-Pc-9ow"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1I-SE-jg9">
+                                <rect key="frame" x="149" y="711" width="67" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Child"/>
+                                <connections>
+                                    <action selector="addChildButton:" destination="6p4-yK-6KI" eventType="touchUpInside" id="1ci-bn-xPu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2TA-ns-vdt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -81,21 +91,111 @@
             </objects>
             <point key="canvasLocation" x="31.884057971014496" y="-260.49107142857144"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="b7p-5X-EvA">
             <objects>
-                <viewController id="7Lt-9w-iV4" sceneMemberID="viewController">
+                <viewController id="7Lt-9w-iV4" customClass="HomeViewController" customModule="KidFund" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="54h-Yx-lYW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FN5-IQ-Phg">
+                                <rect key="frame" x="0.0" y="384" width="414" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="U3S-lV-jhr">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="80" minY="0.0" maxX="80" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChildCollectionViewCell" id="1l2-5u-Yhl" customClass="ChildCollectionViewCell" customModule="KidFund" customModuleProvider="target">
+                                        <rect key="frame" x="80" y="0.0" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CRJ-1k-spE">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aca-j3-xMY">
+                                                    <rect key="frame" x="4" y="40.5" width="72" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" name="AccentColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3W-Z5-Qlm">
+                                                    <rect key="frame" x="4" y="12" width="72" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" name="AccentColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Aca-j3-xMY" firstAttribute="top" secondItem="H3W-Z5-Qlm" secondAttribute="bottom" constant="8" id="FQg-jC-hOU"/>
+                                                <constraint firstItem="H3W-Z5-Qlm" firstAttribute="leading" secondItem="CRJ-1k-spE" secondAttribute="leading" constant="4" id="ODw-oq-3RV"/>
+                                                <constraint firstAttribute="trailing" secondItem="H3W-Z5-Qlm" secondAttribute="trailing" constant="4" id="XNF-Pg-pEN"/>
+                                                <constraint firstAttribute="trailing" secondItem="Aca-j3-xMY" secondAttribute="trailing" constant="4" id="XzF-2g-YLI"/>
+                                                <constraint firstItem="Aca-j3-xMY" firstAttribute="leading" secondItem="CRJ-1k-spE" secondAttribute="leading" constant="4" id="ahw-dl-zB7"/>
+                                                <constraint firstItem="H3W-Z5-Qlm" firstAttribute="top" secondItem="CRJ-1k-spE" secondAttribute="top" constant="12" id="hd7-ik-OUJ"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Aca-j3-xMY" secondAttribute="bottom" constant="8" id="kDg-0W-Qbb"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" name="AppGreen"/>
+                                        <size key="customSize" width="80" height="80"/>
+                                        <connections>
+                                            <outlet property="childAgeLabel" destination="Aca-j3-xMY" id="ucR-29-1Vx"/>
+                                            <outlet property="childNameLabel" destination="H3W-Z5-Qlm" id="Ykb-wD-WE8"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4g-bn-lUS">
+                                <rect key="frame" x="10" y="148" width="394" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7C-pN-4ZU">
+                                <rect key="frame" x="167" y="220" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhz-GS-skr">
+                                        <rect key="frame" x="20" y="8" width="41.5" height="20.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="AccentColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Parent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXv-yO-rss">
+                                        <rect key="frame" x="16" y="36" width="49.5" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="AppGreenBlue"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ham-QO-O0F"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ham-QO-O0F" firstAttribute="trailing" secondItem="a4g-bn-lUS" secondAttribute="trailing" constant="10" id="Iox-iq-ok4"/>
+                            <constraint firstItem="a4g-bn-lUS" firstAttribute="top" secondItem="ham-QO-O0F" secondAttribute="top" constant="60" id="hOw-CB-tMP"/>
+                            <constraint firstItem="a4g-bn-lUS" firstAttribute="leading" secondItem="ham-QO-O0F" secondAttribute="leading" constant="10" id="n7n-dm-DhG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eGr-5f-G75"/>
+                    <connections>
+                        <outlet property="childrenCollectionView" destination="FN5-IQ-Phg" id="x1Y-Pn-v6B"/>
+                        <outlet property="greetingLabel" destination="a4g-bn-lUS" id="FmE-Ig-e0l"/>
+                        <outlet property="parentNameLabel" destination="zhz-GS-skr" id="7wf-1Y-yKw"/>
+                        <outlet property="parentView" destination="p7C-pN-4ZU" id="EHc-xy-eHN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JLr-Fx-sHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32" y="1105"/>
+            <point key="canvasLocation" x="31.884057971014496" y="1104.9107142857142"/>
         </scene>
         <!--Create Profile View Controller-->
         <scene sceneID="IeL-m4-F27">
@@ -183,7 +283,7 @@
         <!--Navigation Controller-->
         <scene sceneID="pqQ-VF-7QF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s0R-YH-6LI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="s0R-YH-6LI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="whT-Tq-S0r">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -198,8 +298,31 @@
             </objects>
             <point key="canvasLocation" x="32" y="425"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="yYc-QD-fFj">
+            <objects>
+                <viewController id="55A-Hz-qAb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xV5-yV-UsJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v6L-QX-qUV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-509" y="1182"/>
+        </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppGreen">
+            <color red="0.64800000190734863" green="0.99900001287460327" blue="0.84799998998641968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppGreenBlue">
+            <color red="0.36500000953674316" green="0.95300000905990601" blue="0.88400000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
