@@ -12,6 +12,8 @@ import AVFoundation
 class ChildHomeViewController: UIViewController {
     
     var selectedChild = PFObject(className: "Children");
+    var greetingText = ""
+    var fundsText = ""
     
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var greetingLabel: UILabel!
@@ -20,18 +22,18 @@ class ChildHomeViewController: UIViewController {
         super.viewDidLoad()
         print(selectedChild["name"]!)
         let childName = selectedChild["name"] as! String
-        let greetingText = "Hi " + childName + "!"
-        greetingLabel.text = greetingText
+        self.greetingText = "Hi " + childName + "!"
+        greetingLabel.text = self.greetingText
         let total = selectedChild["total"] as! Double
         let dollars = floor(total)
         let dollarsStr = String(Int(dollars))
         let cents = floor(total.truncatingRemainder(dividingBy: 1) * 100)
         let centsStr = String(Int(cents))
-        let fundsString = "You have " + dollarsStr + " dollars and " + centsStr + " cents!"
-        dollarsCentsLabel.text = fundsString
+        self.fundsText = "You have " + dollarsStr + " dollars and " + centsStr + " cents!"
+//        dollarsCentsLabel.text = fundsString
         totalLabel.text = "Total Funds: " + String(format: "$%.2f", total)
         
-        speak(greetingText + " " + fundsString)
+//        speak(greetingText + " " + fundsString)
 
         
 //        let speechSynthesizer = AVSpeechSynthesizer()
@@ -42,11 +44,21 @@ class ChildHomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func onTapEarnMoney(_ sender: Any) {
-        print("tapped")
+    @IBAction func greetingButton(_ sender: Any) {
+        speak(self.greetingText)
+    }
+    
+    @IBAction func totalFundsButton(_ sender: Any) {
+        speak(self.fundsText)
+    }
+    
+    @IBAction func earnMoneyButton(_ sender: Any) {
         speak("Earn Money")
     }
     
+    @IBAction func goalsButton(_ sender: Any) {
+        speak("Goals")
+    }
     
     func speak(_ speakString: String) {
         let speechSynthesizer = AVSpeechSynthesizer()
@@ -64,10 +76,14 @@ class ChildHomeViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "childChoresSegue" {
             print("loading child chores")
-
-//            print(selectedChild["name"]!)
             let childChoresViewController = segue.destination as! ChildChoresViewController
             childChoresViewController.selectedChild = selectedChild
+                      
+        }
+        if segue.identifier == "childGoalsSegue" {
+            print("loading child goals")
+            let childGoalsViewController = segue.destination as! ChildGoalsViewController
+            childGoalsViewController.selectedChild = selectedChild
                       
         }
     }

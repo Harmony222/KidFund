@@ -20,7 +20,7 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         let name = selectedChild["name"]
-        childNameLabel.text = name as? String
+        childNameLabel.text = (name as? String)! + "'s Tasks"
         
         choreCollectionView.delegate = self
         choreCollectionView.dataSource = self
@@ -40,15 +40,7 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
             }
         }
     }
-    
-    func speak(_ speakString: String) {
-        let speechSynthesizer = AVSpeechSynthesizer()
-        let speechUtterance: AVSpeechUtterance = AVSpeechUtterance(string: speakString)
-        speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.5
-        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        speechSynthesizer.speak(speechUtterance)
-    }
-    
+        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return childChores.count
     }
@@ -65,7 +57,6 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
         cell.choreDescription.text = description
         cell.choreAmount.text = String(format: "$%.2f", amount)
 
-
         let imageFile = chore["image"] as! PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
@@ -73,8 +64,7 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
         
         cell.speakButton.tag = indexPath.item
         cell.speakButton.addTarget(self, action: #selector(speakButton), for: .touchUpInside)
-        
-        
+                
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         return cell
@@ -86,17 +76,14 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
         let ChildChore = self.childChores[indexpath1.item] as PFObject
         let chore = ChildChore["chore"] as! PFObject
         let description = chore["description"] as! String
-        speak(description)
+        Utils.speak(description)
 
    }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let alertController = UIAlertController(title: "", message: "Complete this task?", preferredStyle: .alert)
-        speak("Complete this task? Select no or yes.")
-//        alertController.addTextField { (textField) in
-//            textField.placeholder = "Password"
-//            textField.isSecureTextEntry = true
-//        }
+        Utils.speak("Complete this task? Select no or yes.")
+
         alertController.addAction(UIAlertAction(title: NSLocalizedString("NO", comment: "Default action"), style: .default, handler: { _ in
             self.dismiss(animated: true, completion: nil)
         }))
@@ -110,7 +97,7 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
                 if success {
                     print("child's chore sent for approval")
                     let alert = UIAlertController(title: "", message: "Sent to your parent for approval!", preferredStyle: .alert)
-                    self.speak("Sent to your parent for approval!")
+                    Utils.speak("Sent to your parent for approval!")
                     alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                     NSLog("The \"OK\" alert occured.")
                     }))
@@ -157,12 +144,8 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
         cell.layer.borderColor = UIColor.clear.cgColor
         cell.layer.borderWidth = 2
         cell.isSelected = false
-//        let chore = chores[indexPath.item]
-//        // remove chore from array upon deselect
-//        if let index = selectedChores.firstIndex(of: chore) {
-//            selectedChores.remove(at: index)
-//        }
     }
+    
     /*
     // MARK: - Navigation
 

@@ -10,6 +10,7 @@
 		DAA3C4DDB834070C639BE30A /* Pods_KidFund.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AAEB0D9B3DB6BD355B0B14 /* Pods_KidFund.framework */; };
 		FF087B4F26214FBB00395659 /* ApproveChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF087B4E26214FBB00395659 /* ApproveChoresViewController.swift */; };
 		FF087B52262150CA00395659 /* ApproveChoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF087B51262150CA00395659 /* ApproveChoreTableViewCell.swift */; };
+		FF0DC70126221ADE00568B5A /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0DC70026221ADE00568B5A /* SharedFunctions.swift */; };
 		FFAC86712620F236007DA16F /* ChildChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC86702620F236007DA16F /* ChildChoresViewController.swift */; };
 		FFACD652261FB75D00EC4ADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACD651261FB75C00EC4ADB /* AppDelegate.swift */; };
 		FFACD654261FB75D00EC4ADB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACD653261FB75D00EC4ADB /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 		FFD2D8CE261FC94A00E9820B /* ChildCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2D8CD261FC94A00E9820B /* ChildCollectionViewCell.swift */; };
 		FFD2FA5B261FC4840025B3AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2FA5A261FC4840025B3AB /* HomeViewController.swift */; };
 		FFD2FA62261FC65E0025B3AB /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2FA61261FC65E0025B3AB /* CustomView.swift */; };
+		FFD6CE3326220EC8002B4B3E /* ChildGoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6CE3226220EC8002B4B3E /* ChildGoalsViewController.swift */; };
 		FFD8B1AF261FD46200A60115 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8B1AE261FD46200A60115 /* CustomButton.swift */; };
 		FFD8B1B2261FD89B00A60115 /* ParentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8B1B1261FD89B00A60115 /* ParentHomeViewController.swift */; };
 		FFD8B1B6261FE24000A60115 /* AddChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8B1B5261FE24000A60115 /* AddChildViewController.swift */; };
@@ -38,6 +40,7 @@
 		F549FFA9D33D31A6325FCC19 /* Pods-KidFund.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KidFund.debug.xcconfig"; path = "Target Support Files/Pods-KidFund/Pods-KidFund.debug.xcconfig"; sourceTree = "<group>"; };
 		FF087B4E26214FBB00395659 /* ApproveChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveChoresViewController.swift; sourceTree = "<group>"; };
 		FF087B51262150CA00395659 /* ApproveChoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveChoreTableViewCell.swift; sourceTree = "<group>"; };
+		FF0DC70026221ADE00568B5A /* SharedFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctions.swift; sourceTree = "<group>"; };
 		FFAC86702620F236007DA16F /* ChildChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildChoresViewController.swift; sourceTree = "<group>"; };
 		FFACD64E261FB75C00EC4ADB /* KidFund.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidFund.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFACD651261FB75C00EC4ADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +56,7 @@
 		FFD2D8CD261FC94A00E9820B /* ChildCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCollectionViewCell.swift; sourceTree = "<group>"; };
 		FFD2FA5A261FC4840025B3AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FFD2FA61261FC65E0025B3AB /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		FFD6CE3226220EC8002B4B3E /* ChildGoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildGoalsViewController.swift; sourceTree = "<group>"; };
 		FFD8B1AE261FD46200A60115 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FFD8B1B1261FD89B00A60115 /* ParentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentHomeViewController.swift; sourceTree = "<group>"; };
 		FFD8B1B5261FE24000A60115 /* AddChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				FFACD65F261FB75D00EC4ADB /* Info.plist */,
 				FFD2FA61261FC65E0025B3AB /* CustomView.swift */,
 				FFD8B1AE261FD46200A60115 /* CustomButton.swift */,
+				FF0DC70026221ADE00568B5A /* SharedFunctions.swift */,
 			);
 			path = KidFund;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 				FFD1CAA62620C1D3004DE704 /* AddGoalsViewController.swift */,
 				FFAC86702620F236007DA16F /* ChildChoresViewController.swift */,
 				FF087B4E26214FBB00395659 /* ApproveChoresViewController.swift */,
+				FFD6CE3226220EC8002B4B3E /* ChildGoalsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -271,8 +277,10 @@
 			files = (
 				FFD2FA5B261FC4840025B3AB /* HomeViewController.swift in Sources */,
 				FFD1CAAA2620CF7E004DE704 /* GoalCollectionViewCell.swift in Sources */,
+				FFD6CE3326220EC8002B4B3E /* ChildGoalsViewController.swift in Sources */,
 				FFACD674261FBBAA00EC4ADB /* CreateProfileViewController.swift in Sources */,
 				FFD2D8CE261FC94A00E9820B /* ChildCollectionViewCell.swift in Sources */,
+				FF0DC70126221ADE00568B5A /* SharedFunctions.swift in Sources */,
 				FFACD671261FB8F000EC4ADB /* LoginViewController.swift in Sources */,
 				FFF49347262002530038F295 /* ChoreCollectionViewCell.swift in Sources */,
 				FFD8B1B2261FD89B00A60115 /* ParentHomeViewController.swift in Sources */,

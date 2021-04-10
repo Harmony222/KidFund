@@ -106,12 +106,10 @@ class ParentChildDetailsViewController: UIViewController, UICollectionViewDataSo
         cell.goalDescriptionLabel.text = description
         cell.goalAmountLabel.text = String(format: "$%.2f", amount)
 
-
         let imageFile = goal["image"] as! PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
         cell.goalImageView.af.setImage(withURL: url)
-
 
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
