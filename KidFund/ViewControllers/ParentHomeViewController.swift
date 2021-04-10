@@ -9,12 +9,12 @@ import UIKit
 import Parse
 
 class ParentHomeViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate {
-
-    
+   
     
     var userChildren = [PFObject]()
-    var numberOfCells: Int!
+    var toApprove = [PFObject]()
     
+    @IBOutlet weak var approvalButton: CustomButton!
     @IBOutlet weak var childrenCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -28,11 +28,34 @@ class ParentHomeViewController: UIViewController,  UICollectionViewDataSource, U
 
         layout.itemSize = CGSize(width: 120, height: 120)
         // Do any additional setup after loading the view.
+        checkForChoresToApprove()
+        
+    }
+    
+    func checkForChoresToApprove() {
+        let query = PFQuery(className: "ChoresToApprove")
+        query.includeKeys(["toApprove", "toApprove.child", "toApprove.chore"])
+        query.findObjectsInBackground { (toApprove, error) in
+            print(toApprove!)
+            if toApprove!.count > 0 {
+                self.toApprove = toApprove!
+                let newButtonText = "You have tasks/chores to approve!"
+                self.approvalButton.setTitle(newButtonText, for: .normal)
+                self.approvalButton.fillColor = UIColor(named: "AppHighlight") ?? UIColor.yellow
+                self.approvalButton.setNeedsDisplay()
+            } else {
+                let newButtonText = "You have no tasks/chores ready for approval."
+                self.approvalButton.setTitle(newButtonText, for: .normal)
+                self.approvalButton.fillColor = UIColor(named: "AppLightGray") ?? UIColor.gray
+                self.approvalButton.setNeedsDisplay()
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getChildren()
+        checkForChoresToApprove()
     }
     
     func getChildren() {
@@ -93,3 +116,4 @@ class ParentHomeViewController: UIViewController,  UICollectionViewDataSource, U
     
 
 }
+

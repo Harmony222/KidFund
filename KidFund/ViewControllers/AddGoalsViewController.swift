@@ -92,6 +92,7 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
             selectedGoals.remove(at: index)
         }
     }
+    
     @IBAction func onAddSelectedGoalsButton(_ sender: Any) {
         for selected in self.selectedGoals {
             print(selected["description"] as! String)

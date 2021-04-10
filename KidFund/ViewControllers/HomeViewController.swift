@@ -38,7 +38,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        layout.minimumInteritemSpacing = 20
 //
         layout.itemSize = CGSize(width: 120, height: 120)
-        // Do any additional setup after loading the view.
         
         // Get children of parent from database
         getChildren()
@@ -72,7 +71,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }))
         alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             let textField = alertController.textFields![0] as UITextField
-                print(textField.text!)
             let password = textField.text!
             let user = PFUser.current()
             let username = user?.username!

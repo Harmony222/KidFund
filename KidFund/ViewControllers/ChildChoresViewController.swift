@@ -90,6 +90,79 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
 
    }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let alertController = UIAlertController(title: "", message: "Complete this task?", preferredStyle: .alert)
+        speak("Complete this task? Select no or yes.")
+//        alertController.addTextField { (textField) in
+//            textField.placeholder = "Password"
+//            textField.isSecureTextEntry = true
+//        }
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("NO", comment: "Default action"), style: .default, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("YES", comment: "Default action"), style: .default, handler: { _ in
+            let ChildChore = self.childChores[indexPath.item] as PFObject
+            let choreToApprove = PFObject(className: "ChoresToApprove")
+            choreToApprove["toApprove"] = ChildChore
+
+
+            choreToApprove.saveInBackground { (success, error) in
+                if success {
+                    print("child's chore sent for approval")
+                    let alert = UIAlertController(title: "", message: "Sent to your parent for approval!", preferredStyle: .alert)
+                    self.speak("Sent to your parent for approval!")
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The \"OK\" alert occured.")
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    print("error adding child/chore for approval")
+                }
+            }
+        }))
+
+        self.present(alertController, animated: true, completion: nil)
+        
+        
+        
+//        //https://stackoverflow.com/questions/49935711/adding-borders-on-collectionview-cell
+//        print(indexPath.item)
+//        let cell = collectionView.cellForItem(at: indexPath) as! ChoreCollectionViewCell
+//        cell.layer.borderColor = UIColor(named: "AppGreenBlue")?.cgColor
+//        cell.layer.borderWidth = 2
+//        cell.isSelected = true
+//        let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert);
+//        // Add Action
+//        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil));
+//        //show it
+//        let btnImage    = UIImage(systemName: "checkmark.square")
+//        let imageButton : UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+//        imageButton.setBackgroundImage(btnImage, for: UIControl.State())
+//        alertController.view.addSubview(imageButton)
+//        self.present(alertController, animated: true, completion: {
+//            () -> Void in
+//        })
+//        let chore = chores[indexPath.item]
+////        let customAmountStr = cell.customAmount.text ?? "0"
+////        let customAmount = Double(customAmountStr)!
+//        // add chore to array when selected
+//        selectedChores.append(chore)
+////        customAmounts.append(customAmount)
+    }
+
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+        let cell = collectionView.cellForItem(at: indexPath) as! ChoreCollectionViewCell
+        cell.layer.borderColor = UIColor.clear.cgColor
+        cell.layer.borderWidth = 2
+        cell.isSelected = false
+//        let chore = chores[indexPath.item]
+//        // remove chore from array upon deselect
+//        if let index = selectedChores.firstIndex(of: chore) {
+//            selectedChores.remove(at: index)
+//        }
+    }
     /*
     // MARK: - Navigation
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DAA3C4DDB834070C639BE30A /* Pods_KidFund.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AAEB0D9B3DB6BD355B0B14 /* Pods_KidFund.framework */; };
+		FF087B4F26214FBB00395659 /* ApproveChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF087B4E26214FBB00395659 /* ApproveChoresViewController.swift */; };
+		FF087B52262150CA00395659 /* ApproveChoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF087B51262150CA00395659 /* ApproveChoreTableViewCell.swift */; };
 		FFAC86712620F236007DA16F /* ChildChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC86702620F236007DA16F /* ChildChoresViewController.swift */; };
 		FFACD652261FB75D00EC4ADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACD651261FB75C00EC4ADB /* AppDelegate.swift */; };
 		FFACD654261FB75D00EC4ADB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACD653261FB75D00EC4ADB /* SceneDelegate.swift */; };
@@ -34,6 +36,8 @@
 		09AAEB0D9B3DB6BD355B0B14 /* Pods_KidFund.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KidFund.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FB0687B279559B741955B8 /* Pods-KidFund.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KidFund.release.xcconfig"; path = "Target Support Files/Pods-KidFund/Pods-KidFund.release.xcconfig"; sourceTree = "<group>"; };
 		F549FFA9D33D31A6325FCC19 /* Pods-KidFund.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KidFund.debug.xcconfig"; path = "Target Support Files/Pods-KidFund/Pods-KidFund.debug.xcconfig"; sourceTree = "<group>"; };
+		FF087B4E26214FBB00395659 /* ApproveChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveChoresViewController.swift; sourceTree = "<group>"; };
+		FF087B51262150CA00395659 /* ApproveChoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveChoreTableViewCell.swift; sourceTree = "<group>"; };
 		FFAC86702620F236007DA16F /* ChildChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildChoresViewController.swift; sourceTree = "<group>"; };
 		FFACD64E261FB75C00EC4ADB /* KidFund.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidFund.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFACD651261FB75C00EC4ADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 				FFF493432620006A0038F295 /* AddChoresViewController.swift */,
 				FFD1CAA62620C1D3004DE704 /* AddGoalsViewController.swift */,
 				FFAC86702620F236007DA16F /* ChildChoresViewController.swift */,
+				FF087B4E26214FBB00395659 /* ApproveChoresViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 				FFD2D8CD261FC94A00E9820B /* ChildCollectionViewCell.swift */,
 				FFF49346262002530038F295 /* ChoreCollectionViewCell.swift */,
 				FFD1CAA92620CF7E004DE704 /* GoalCollectionViewCell.swift */,
+				FF087B51262150CA00395659 /* ApproveChoreTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -275,9 +281,11 @@
 				FFD8B1AF261FD46200A60115 /* CustomButton.swift in Sources */,
 				FFAC86712620F236007DA16F /* ChildChoresViewController.swift in Sources */,
 				FFD8B1BC261FE94700A60115 /* ChildHomeViewController.swift in Sources */,
+				FF087B4F26214FBB00395659 /* ApproveChoresViewController.swift in Sources */,
 				FFD1CAA72620C1D3004DE704 /* AddGoalsViewController.swift in Sources */,
 				FFD2FA62261FC65E0025B3AB /* CustomView.swift in Sources */,
 				FFACD652261FB75D00EC4ADB /* AppDelegate.swift in Sources */,
+				FF087B52262150CA00395659 /* ApproveChoreTableViewCell.swift in Sources */,
 				FFF493442620006A0038F295 /* AddChoresViewController.swift in Sources */,
 				FFACD654261FB75D00EC4ADB /* SceneDelegate.swift in Sources */,
 			);
