@@ -64,12 +64,10 @@ class ApproveChoresViewController: UIViewController, UITableViewDelegate, UITabl
 
     @objc func approvalButton(sender:UIButton) {
         let indexpath = IndexPath(row: sender.tag, section: 0)
-
         let toApprove = self.toApprove[indexpath.item] as PFObject
-        print(toApprove)
+
         let ChildChore = toApprove["toApprove"] as! PFObject
         let child = ChildChore["child"] as! PFObject
-//        let chore = ChildChore["chore"] as! PFObject
 
         // calculate new total
         let prevTotal = child["total"] as! Double

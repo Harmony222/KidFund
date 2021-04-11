@@ -16,6 +16,7 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var greetingLabel: UILabel!
     var goals = [PFObject]()
     var selectedGoals = [PFObject]()
+    let myRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,23 +29,32 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
         goalsCollectionView.dataSource = self
         self.goalsCollectionView.allowsMultipleSelection = true
         self.goalsCollectionView.allowsMultipleSelectionDuringEditing = true
-                
+        
+        getGoals()
+        myRefreshControl.addTarget(self, action: #selector(getGoals), for: .valueChanged)
+        goalsCollectionView.refreshControl = myRefreshControl
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        selectedGoals.removeAll()
         getGoals()
     }
     
-    func getGoals() {
+    @objc func getGoals() {
         let query = PFQuery(className: "Goals")
         query.includeKeys(["description", "amount", "image"])
         query.findObjectsInBackground { (goals, error) in
             if goals != nil {
                 self.goals = goals!
                 self.goalsCollectionView.reloadData()
+                self.myRefreshControl.endRefreshing()
             }
         }
+    }
+    
+    @IBAction func onDoneButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -69,11 +79,11 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
         if cell.isSelected {
             //put border logic
             cell.layer.borderColor = UIColor(named: "AppGreenBlue")?.cgColor
-            cell.layer.borderWidth = 2
+            cell.layer.borderWidth = 3
         } else {
             // remove border
             cell.layer.borderColor = UIColor.clear.cgColor
-            cell.layer.borderWidth = 2
+            cell.layer.borderWidth = 3
         }
         
         cell.layer.cornerRadius = 10
@@ -86,7 +96,7 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
         print(indexPath.item)
         let cell = collectionView.cellForItem(at: indexPath) as! GoalCollectionViewCell
         cell.layer.borderColor = UIColor(named: "AppGreenBlue")?.cgColor
-        cell.layer.borderWidth = 2
+        cell.layer.borderWidth = 3
         cell.isSelected = true
         let goal = goals[indexPath.item]
 //        let customAmountStr = cell.customAmount.text ?? "0"
@@ -100,7 +110,7 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! GoalCollectionViewCell
         cell.layer.borderColor = UIColor.clear.cgColor
-        cell.layer.borderWidth = 2
+        cell.layer.borderWidth = 3
         cell.isSelected = false
         let goal = goals[indexPath.item]
         // remove chore from array upon deselect
@@ -118,10 +128,9 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
             query.whereKey("child", equalTo: selectedChild)
             query.whereKey("goal", equalTo: selected)
             
-
             query.findObjectsInBackground { (childGoals, error) in
                 if childGoals!.count != 0 {
-                    print(childGoals!)
+//                    print(childGoals!)
                     print("child/goal is duplicate, not added")
                 } else {
                     // if no duplicates, add Child + Goal to table
@@ -132,7 +141,6 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
                     goal.saveInBackground { (success, error) in
                         if success {
                             print("child's goal added")
-                            
                         } else {
                             print("error adding child's goal")
                         }

@@ -346,23 +346,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome Parent!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mln-8P-Lhg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Parent!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mln-8P-Lhg">
                                 <rect key="frame" x="98" y="126" width="218" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Child to Add Tasks or Goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5W-N9-aFA">
-                                <rect key="frame" x="55" y="359" width="261" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wjf-Tf-5oY">
-                                <rect key="frame" x="0.0" y="420" width="414" height="476"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wjf-Tf-5oY">
+                                <rect key="frame" x="0.0" y="361" width="414" height="535"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="lH5-SL-ztY">
                                     <size key="itemSize" width="128" height="128"/>
@@ -412,9 +403,12 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hOG-Ay-i9x" customClass="CustomButton" customModule="KidFund" customModuleProvider="target">
-                                <rect key="frame" x="74" y="218" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hOG-Ay-i9x" customClass="CustomButton" customModule="KidFund" customModuleProvider="target">
+                                <rect key="frame" x="49.5" y="202" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="od9-fe-rTa"/>
+                                    <constraint firstAttribute="width" constant="60" id="om0-se-H9V"/>
+                                </constraints>
                                 <state key="normal" title="Add Child"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
@@ -425,9 +419,12 @@
                                     <segue destination="W3U-1Y-ihs" kind="presentation" modalPresentationStyle="fullScreen" id="ctu-k7-59p"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="QAU-vx-E8n" customClass="CustomButton" customModule="KidFund" customModuleProvider="target">
-                                <rect key="frame" x="233" y="218" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="QAU-vx-E8n" customClass="CustomButton" customModule="KidFund" customModuleProvider="target">
+                                <rect key="frame" x="153.5" y="202" width="207" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="PJz-Gw-vcE"/>
+                                    <constraint firstAttribute="width" constant="207" id="sbb-hy-POP"/>
+                                </constraints>
                                 <state key="normal" title="You have no tasks/chores ready for approval."/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
@@ -438,9 +435,29 @@
                                     <segue destination="9qF-8H-ts5" kind="show" id="VxG-iL-vAb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Child to Add Tasks or Goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5W-N9-aFA">
+                                <rect key="frame" x="77" y="305" width="260.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zyr-Wy-C2f"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wjf-Tf-5oY" firstAttribute="leading" secondItem="zyr-Wy-C2f" secondAttribute="leading" id="1hm-4a-Y8Z"/>
+                            <constraint firstAttribute="bottom" secondItem="Wjf-Tf-5oY" secondAttribute="bottom" id="9fg-Li-Dvz"/>
+                            <constraint firstItem="Wjf-Tf-5oY" firstAttribute="trailing" secondItem="zyr-Wy-C2f" secondAttribute="trailing" id="GPW-XK-dQg"/>
+                            <constraint firstItem="Mln-8P-Lhg" firstAttribute="centerX" secondItem="23V-Bn-KaP" secondAttribute="centerX" id="NoO-ad-bXi"/>
+                            <constraint firstItem="Mln-8P-Lhg" firstAttribute="top" secondItem="zyr-Wy-C2f" secondAttribute="top" constant="38" id="Qmu-Ad-974"/>
+                            <constraint firstItem="QAU-vx-E8n" firstAttribute="centerX" secondItem="23V-Bn-KaP" secondAttribute="centerX" constant="50" id="SAR-rw-iOg"/>
+                            <constraint firstItem="t5W-N9-aFA" firstAttribute="top" secondItem="QAU-vx-E8n" secondAttribute="bottom" constant="43" id="Y16-op-h5Q"/>
+                            <constraint firstItem="Wjf-Tf-5oY" firstAttribute="top" secondItem="t5W-N9-aFA" secondAttribute="bottom" constant="35.5" id="bc7-Je-XOC"/>
+                            <constraint firstItem="t5W-N9-aFA" firstAttribute="centerX" secondItem="23V-Bn-KaP" secondAttribute="centerX" id="bdh-3p-XEv"/>
+                            <constraint firstItem="hOG-Ay-i9x" firstAttribute="top" secondItem="Mln-8P-Lhg" secondAttribute="bottom" constant="40" id="fiL-AU-BaR"/>
+                            <constraint firstItem="QAU-vx-E8n" firstAttribute="top" secondItem="Mln-8P-Lhg" secondAttribute="bottom" constant="40" id="ias-qe-byI"/>
+                            <constraint firstItem="QAU-vx-E8n" firstAttribute="leading" secondItem="hOG-Ay-i9x" secondAttribute="trailing" constant="44" id="tNA-FQ-dcf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g2y-xc-2Eb">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="wmT-45-jlr">
@@ -548,7 +565,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79w-hE-UuP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719" y="2613"/>
+            <point key="canvasLocation" x="719" y="2642"/>
         </scene>
         <!--Add Child View Controller-->
         <scene sceneID="RHe-Wm-PDE">
@@ -847,7 +864,7 @@
                                     <size key="itemSize" width="248" height="286"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoalCollectionViewCell" id="QNn-49-sed" customClass="GoalCollectionViewCell" customModule="KidFund" customModuleProvider="target">
@@ -1007,15 +1024,14 @@
                                     <constraint firstAttribute="trailing" secondItem="Ltk-Vf-J8I" secondAttribute="trailing" constant="4" id="yDg-DL-26T"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AvW-Hb-TD5">
-                                <rect key="frame" x="0.0" y="229" width="414" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AvW-Hb-TD5">
+                                <rect key="frame" x="0.0" y="204" width="414" height="692"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OgV-k5-zrj">
                                     <size key="itemSize" width="229" height="253"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChoreCollectionViewCell" id="Lzz-8N-hjS" customClass="ChoreCollectionViewCell" customModule="KidFund" customModuleProvider="target">
@@ -1098,13 +1114,17 @@
                         <viewLayoutGuide key="safeArea" id="bmV-XF-rxD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="AvW-Hb-TD5" secondAttribute="bottom" id="5mE-x2-dsa"/>
                             <constraint firstItem="bHa-Zm-SWb" firstAttribute="top" secondItem="bmV-XF-rxD" secondAttribute="top" id="64y-nl-NO5"/>
                             <constraint firstItem="bHa-Zm-SWb" firstAttribute="leading" secondItem="bmV-XF-rxD" secondAttribute="leading" id="7oj-I8-hju"/>
                             <constraint firstItem="ayY-IM-8Yh" firstAttribute="top" secondItem="bHa-Zm-SWb" secondAttribute="bottom" constant="25" id="Bfy-KF-RgM"/>
                             <constraint firstItem="bHa-Zm-SWb" firstAttribute="trailing" secondItem="bmV-XF-rxD" secondAttribute="trailing" id="M7O-mh-dXl"/>
+                            <constraint firstItem="AvW-Hb-TD5" firstAttribute="top" secondItem="ayY-IM-8Yh" secondAttribute="bottom" constant="22" id="Pgz-Ao-h9t"/>
                             <constraint firstItem="bmV-XF-rxD" firstAttribute="trailing" secondItem="jKE-IK-Jol" secondAttribute="trailing" constant="20" id="RuK-ga-XTj"/>
+                            <constraint firstItem="AvW-Hb-TD5" firstAttribute="trailing" secondItem="bmV-XF-rxD" secondAttribute="trailing" id="Tyt-EN-x4P"/>
                             <constraint firstItem="bmV-XF-rxD" firstAttribute="trailing" secondItem="ayY-IM-8Yh" secondAttribute="trailing" constant="4" id="nh3-He-tcp"/>
                             <constraint firstItem="ayY-IM-8Yh" firstAttribute="leading" secondItem="bmV-XF-rxD" secondAttribute="leading" constant="4" id="u4H-fc-wEh"/>
+                            <constraint firstItem="AvW-Hb-TD5" firstAttribute="leading" secondItem="bmV-XF-rxD" secondAttribute="leading" id="wqw-ZZ-OPP"/>
                             <constraint firstItem="jKE-IK-Jol" firstAttribute="top" secondItem="bHa-Zm-SWb" secondAttribute="bottom" constant="25" id="wxD-OL-aip"/>
                         </constraints>
                     </view>
@@ -1644,7 +1664,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Create Custom Goal"/>
                                 <connections>
-                                    <segue destination="hIg-rm-T9s" kind="show" identifier="createGoalSegue" id="NrN-OS-HtR"/>
+                                    <segue destination="hIg-rm-T9s" kind="presentation" identifier="createGoalSegue" modalPresentationStyle="fullScreen" id="NrN-OS-HtR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNc-WZ-YJ2">
@@ -1671,7 +1691,7 @@
                             <constraint firstItem="mpY-dI-wZQ" firstAttribute="top" secondItem="zmX-Zf-LZa" secondAttribute="bottom" constant="21" id="eQx-Nl-Wph"/>
                             <constraint firstItem="NNc-WZ-YJ2" firstAttribute="leading" secondItem="yvL-Xk-lKI" secondAttribute="leading" constant="8" id="i0O-2U-are"/>
                             <constraint firstItem="mpY-dI-wZQ" firstAttribute="leading" secondItem="yvL-Xk-lKI" secondAttribute="leading" id="ieo-lI-MCt"/>
-                            <constraint firstItem="zmX-Zf-LZa" firstAttribute="leading" secondItem="NNc-WZ-YJ2" secondAttribute="trailing" constant="49" id="isV-iv-7px"/>
+                            <constraint firstItem="zmX-Zf-LZa" firstAttribute="leading" secondItem="NNc-WZ-YJ2" secondAttribute="trailing" priority="999" constant="49" id="isV-iv-7px"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ysf-vk-bSf"/>
@@ -1682,7 +1702,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6H-XU-aLT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719" y="4002"/>
+            <point key="canvasLocation" x="1429" y="4021"/>
         </scene>
         <!--Create Custom Goal View Controller-->
         <scene sceneID="ZDM-5H-zPZ">
@@ -1727,6 +1747,14 @@
                                     <action selector="onCreateGoalButton:" destination="hIg-rm-T9s" eventType="touchUpInside" id="jMg-x2-hc0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQI-tu-QJF">
+                                <rect key="frame" x="20" y="70" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="onCancelButton:" destination="hIg-rm-T9s" eventType="touchUpInside" id="Znn-As-Pwj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9mD-vC-Ebq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1739,7 +1767,73 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YG-SO-kqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1428.985507246377" y="4001.7857142857142"/>
+            <point key="canvasLocation" x="1429" y="4714"/>
+        </scene>
+        <!--Create Custom Chore View Controller-->
+        <scene sceneID="u0e-G5-lG5">
+            <objects>
+                <viewController id="HI8-7r-8HU" customClass="CreateCustomChoreViewController" customModule="KidFund" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mJh-A4-rBo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMN-Vl-f9h">
+                                <rect key="frame" x="50" y="173" width="88" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHG-eo-toF">
+                                <rect key="frame" x="50" y="226" width="60" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IJj-Ed-8Ys">
+                                <rect key="frame" x="151" y="166" width="217" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s0u-Ke-yJa">
+                                <rect key="frame" x="271" y="226" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjp-Mo-aEp">
+                                <rect key="frame" x="50" y="300" width="104" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Create Task"/>
+                                <connections>
+                                    <action selector="onCreateGoalButton:" destination="hIg-rm-T9s" eventType="touchUpInside" id="0Ew-iV-gQI"/>
+                                    <action selector="onCreateTaskButton:" destination="HI8-7r-8HU" eventType="touchUpInside" id="V3e-L5-YiI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEu-cv-xMm">
+                                <rect key="frame" x="20" y="74" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="onCancelButton:" destination="HI8-7r-8HU" eventType="touchUpInside" id="A1F-ZE-NIt"/>
+                                    <action selector="onCancelButton:" destination="hIg-rm-T9s" eventType="touchUpInside" id="GLc-kW-Tth"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="e7x-Jb-JPQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="amountField" destination="s0u-Ke-yJa" id="adW-EH-RI5"/>
+                        <outlet property="descriptionField" destination="IJj-Ed-8Ys" id="kVX-LF-UrQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JYn-jX-iBo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="719" y="4714"/>
         </scene>
         <!--Add Chores View Controller-->
         <scene sceneID="Ael-yV-FS8">
@@ -1827,11 +1921,19 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRT-m9-oAJ">
-                                <rect key="frame" x="121" y="144" width="172" height="36"/>
+                                <rect key="frame" x="8" y="145" width="172" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Selected Tasks"/>
                                 <connections>
                                     <action selector="onAddSelectedChoresButton:" destination="JC9-iC-PVy" eventType="touchUpInside" id="LbV-6r-zut"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8m-bA-ejS">
+                                <rect key="frame" x="229" y="145" width="177" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Create Custom Task"/>
+                                <connections>
+                                    <segue destination="HI8-7r-8HU" kind="presentation" identifier="createChoreSegue" modalPresentationStyle="fullScreen" id="fwU-hw-8LY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1839,12 +1941,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="sPo-9i-GjF" secondAttribute="bottom" id="4zh-AT-rn8"/>
-                            <constraint firstItem="gRT-m9-oAJ" firstAttribute="centerX" secondItem="Jqr-mq-Qhf" secondAttribute="centerX" id="G4B-vR-Jtc"/>
+                            <constraint firstItem="sPo-9i-GjF" firstAttribute="top" secondItem="gRT-m9-oAJ" secondAttribute="bottom" constant="21" id="Bn5-s2-pWo"/>
+                            <constraint firstItem="gRT-m9-oAJ" firstAttribute="leading" secondItem="8bp-hQ-xcv" secondAttribute="leading" constant="8" id="EIL-jZ-nZ2"/>
                             <constraint firstItem="sPo-9i-GjF" firstAttribute="leading" secondItem="8bp-hQ-xcv" secondAttribute="leading" id="GPi-0L-1Rf"/>
+                            <constraint firstItem="k8m-bA-ejS" firstAttribute="leading" secondItem="gRT-m9-oAJ" secondAttribute="trailing" priority="999" constant="49" id="KUo-8h-5Ll"/>
+                            <constraint firstItem="gRT-m9-oAJ" firstAttribute="top" secondItem="BZn-UY-ufH" secondAttribute="bottom" constant="17" id="LBH-LS-2u2"/>
                             <constraint firstItem="sPo-9i-GjF" firstAttribute="trailing" secondItem="8bp-hQ-xcv" secondAttribute="trailing" id="Xqw-hW-lTw"/>
                             <constraint firstItem="BZn-UY-ufH" firstAttribute="top" secondItem="8bp-hQ-xcv" secondAttribute="top" id="ah5-zW-XIc"/>
-                            <constraint firstItem="sPo-9i-GjF" firstAttribute="top" secondItem="gRT-m9-oAJ" secondAttribute="bottom" constant="22" id="fKY-xX-HTl"/>
-                            <constraint firstItem="gRT-m9-oAJ" firstAttribute="top" secondItem="BZn-UY-ufH" secondAttribute="bottom" constant="16" id="rZI-Ut-3Ve"/>
+                            <constraint firstItem="k8m-bA-ejS" firstAttribute="top" secondItem="BZn-UY-ufH" secondAttribute="bottom" constant="17" id="b1E-bx-WU5"/>
+                            <constraint firstItem="8bp-hQ-xcv" firstAttribute="trailing" secondItem="k8m-bA-ejS" secondAttribute="trailing" constant="8" id="f6x-gv-xL3"/>
                             <constraint firstItem="BZn-UY-ufH" firstAttribute="trailing" secondItem="8bp-hQ-xcv" secondAttribute="trailing" id="v2j-b7-I1Q"/>
                             <constraint firstItem="BZn-UY-ufH" firstAttribute="leading" secondItem="8bp-hQ-xcv" secondAttribute="leading" id="z48-N0-3a6"/>
                         </constraints>
@@ -1857,7 +1962,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nLh-y7-K5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719" y="3269"/>
+            <point key="canvasLocation" x="719" y="4021"/>
         </scene>
         <!--Edit Goal View Controller-->
         <scene sceneID="G4j-51-RY2">
@@ -1951,7 +2056,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Fo-bc-s6M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1429" y="3269"/>
+            <point key="canvasLocation" x="719" y="3297"/>
         </scene>
         <!--Edit Child View Controller-->
         <scene sceneID="LV2-WI-woL">

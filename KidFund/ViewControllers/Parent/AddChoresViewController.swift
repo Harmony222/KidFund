@@ -14,6 +14,7 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
     var selectedChild = PFObject(className: "Children");
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var choreCollectionView: UICollectionView!
+    let myRefreshControl = UIRefreshControl()
 
     var chores = [PFObject]()
     var numberOfCells: Int!
@@ -30,24 +31,30 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
         choreCollectionView.dataSource = self
         self.choreCollectionView.allowsMultipleSelection = true
         self.choreCollectionView.allowsMultipleSelectionDuringEditing = true
-//        let layout = choreCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        layout.minimumLineSpacing = 4
-//        layout.minimumInteritemSpacing = 4
-//        let width = (view.frame.size.width - layout.minimumInteritemSpacing) / 2
-//
-//        layout.itemSize = CGSize(width: width, height: width/2)
         
+        getChores()
+        myRefreshControl.addTarget(self, action: #selector(getChores), for: .valueChanged)
+        choreCollectionView.refreshControl = myRefreshControl
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        selectedChores.removeAll()
+        getChores()
+    }
+    
+    @objc func getChores() {
         let query = PFQuery(className: "Chores")
-//        query.whereKeyDoesNotExist("child")
         query.includeKeys(["description", "amount", "image"])
         query.findObjectsInBackground { (chores, error) in
             if chores != nil {
                 self.chores = chores!
                 self.choreCollectionView.reloadData()
+                self.myRefreshControl.endRefreshing()
             }
         }
-        // Do any additional setup after loading the view.
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         chores.count
@@ -73,11 +80,11 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
         if cell.isSelected {
             //put border logic
             cell.layer.borderColor = UIColor(named: "AppGreenBlue")?.cgColor
-            cell.layer.borderWidth = 2
+            cell.layer.borderWidth = 3
         }else {
             // remove border
             cell.layer.borderColor = UIColor.clear.cgColor
-            cell.layer.borderWidth = 2
+            cell.layer.borderWidth = 3
         }
         return cell
     }
@@ -88,7 +95,7 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
         print(indexPath.item)
         let cell = collectionView.cellForItem(at: indexPath) as! ChoreCollectionViewCell
         cell.layer.borderColor = UIColor(named: "AppGreenBlue")?.cgColor
-        cell.layer.borderWidth = 2
+        cell.layer.borderWidth = 3
         cell.isSelected = true
         let chore = chores[indexPath.item]
 //        let customAmountStr = cell.customAmount.text ?? "0"
@@ -98,11 +105,10 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
 //        customAmounts.append(customAmount)
     }
 
-
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! ChoreCollectionViewCell
         cell.layer.borderColor = UIColor.clear.cgColor
-        cell.layer.borderWidth = 2
+        cell.layer.borderWidth = 3
         cell.isSelected = false
         let chore = chores[indexPath.item]
         // remove chore from array upon deselect
@@ -111,6 +117,9 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
+    @IBAction func onDoneButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func onAddSelectedChoresButton(_ sender: Any) {
 //        var duplicateFound = false
@@ -164,15 +173,21 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
 // Chores images reference
 // <a href='https://www.freepik.com/vectors/kids'>Kids vector created by macrovector - www.freepik.com</a>
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "createChoreSegue" {
+            print("loading create Chore")
+            let createChoreViewController = segue.destination as! CreateCustomChoreViewController
+            createChoreViewController.selectedChild = selectedChild
+                      
+        }
     }
-    */
+    
 
 }
 

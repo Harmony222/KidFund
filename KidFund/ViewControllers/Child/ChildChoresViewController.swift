@@ -141,13 +141,7 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
     }
 
 
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
-        let cell = collectionView.cellForItem(at: indexPath) as! ChoreCollectionViewCell
-        cell.layer.borderColor = UIColor.clear.cgColor
-        cell.layer.borderWidth = 2
-        cell.isSelected = false
-    }
+
     
     /*
     // MARK: - Navigation

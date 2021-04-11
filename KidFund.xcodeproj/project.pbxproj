@@ -15,6 +15,7 @@
 		FF2BF7EC26224C5500E955F1 /* EditChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2BF7EB26224C5500E955F1 /* EditChildViewController.swift */; };
 		FF518AFD2622A5A400D1B2DF /* CreateCustomGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF518AFC2622A5A400D1B2DF /* CreateCustomGoalViewController.swift */; };
 		FF780DE126226AF50082F698 /* EditChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF780DE026226AF50082F698 /* EditChoreViewController.swift */; };
+		FF8E964B26235166009BBE51 /* CreateCustomChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8E964A26235166009BBE51 /* CreateCustomChoreViewController.swift */; };
 		FFAC86712620F236007DA16F /* ChildChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC86702620F236007DA16F /* ChildChoresViewController.swift */; };
 		FFACD652261FB75D00EC4ADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACD651261FB75C00EC4ADB /* AppDelegate.swift */; };
 		FFACD654261FB75D00EC4ADB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACD653261FB75D00EC4ADB /* SceneDelegate.swift */; };
@@ -50,6 +51,7 @@
 		FF2BF7EB26224C5500E955F1 /* EditChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildViewController.swift; sourceTree = "<group>"; };
 		FF518AFC2622A5A400D1B2DF /* CreateCustomGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomGoalViewController.swift; sourceTree = "<group>"; };
 		FF780DE026226AF50082F698 /* EditChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChoreViewController.swift; sourceTree = "<group>"; };
+		FF8E964A26235166009BBE51 /* CreateCustomChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomChoreViewController.swift; sourceTree = "<group>"; };
 		FFAC86702620F236007DA16F /* ChildChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildChoresViewController.swift; sourceTree = "<group>"; };
 		FFACD64E261FB75C00EC4ADB /* KidFund.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidFund.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFACD651261FB75C00EC4ADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				FF780DE026226AF50082F698 /* EditChoreViewController.swift */,
 				FFCAEFB126228DFF00EEAE8C /* EditGoalViewController.swift */,
 				FF518AFC2622A5A400D1B2DF /* CreateCustomGoalViewController.swift */,
+				FF8E964A26235166009BBE51 /* CreateCustomChoreViewController.swift */,
 			);
 			path = Parent;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				FFD1CAA72620C1D3004DE704 /* AddGoalsViewController.swift in Sources */,
 				FFD2FA62261FC65E0025B3AB /* CustomView.swift in Sources */,
 				FFACD652261FB75D00EC4ADB /* AppDelegate.swift in Sources */,
+				FF8E964B26235166009BBE51 /* CreateCustomChoreViewController.swift in Sources */,
 				FF087B52262150CA00395659 /* ApproveChoreTableViewCell.swift in Sources */,
 				FFF493442620006A0038F295 /* AddChoresViewController.swift in Sources */,
 				FFACD654261FB75D00EC4ADB /* SceneDelegate.swift in Sources */,

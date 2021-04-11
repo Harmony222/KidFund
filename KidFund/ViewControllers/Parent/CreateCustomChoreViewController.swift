@@ -1,16 +1,17 @@
 //
-//  CreateCustomGoalViewController.swift
+//  CreateCustomChoreViewController.swift
 //  KidFund
 //
-//  Created by Harmony Scarlet on 4/10/21.
+//  Created by Harmony Scarlet on 4/11/21.
 //
 
 import UIKit
 import Parse
 
-class CreateCustomGoalViewController: UIViewController {
+class CreateCustomChoreViewController: UIViewController {
     
     var selectedChild = PFObject(className: "Children");
+    
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var amountField: UITextField!
     
@@ -20,23 +21,23 @@ class CreateCustomGoalViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func onCreateGoalButton(_ sender: Any) {
+    @IBAction func onCreateTaskButton(_ sender: Any) {
         let description = descriptionField.text! as String
         let amount = Double(amountField.text!)
         print(description, amount!)
-        let image = UIImage(systemName: "star.circle.fill")
+        let image = UIImage(systemName: "sparkles")
         
-        let goal = PFObject(className: "Goals")
+        let chore = PFObject(className: "Chores")
         
-        goal["description"] = description
-        goal["amount"] = amount
+        chore["description"] = description
+        chore["amount"] = amount
         
         let imageData = image!.pngData()!
         let file = PFFileObject(name: "image.png", data: imageData)
         
-        goal["image"] = file
-                
-        goal.saveInBackground { (success, error) in
+        chore["image"] = file
+        
+        chore.saveInBackground { (success, error) in
             if success {
                 print("goal created!")
                 self.dismiss(animated: true, completion: nil)
@@ -44,14 +45,12 @@ class CreateCustomGoalViewController: UIViewController {
                 print("error creating goal")
             }
         }
-               
     }
     
     @IBAction func onCancelButton(_ sender: Any) {
-        print("cancel button pressed")
         self.dismiss(animated: true, completion: nil)
-        
     }
+    
     /*
     // MARK: - Navigation
 
