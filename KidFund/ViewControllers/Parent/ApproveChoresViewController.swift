@@ -49,7 +49,7 @@ class ApproveChoresViewController: UIViewController, UITableViewDelegate, UITabl
         
         let childName = child["name"] as! String
         let description = chore["description"] as! String
-        let amount = chore["amount"] as! Double
+        let amount = ChildChore["customAmount"] as! Double
 
         cell.childNameLabel.text = childName
         cell.choreDescriptionLabel.text = description
@@ -69,11 +69,11 @@ class ApproveChoresViewController: UIViewController, UITableViewDelegate, UITabl
         print(toApprove)
         let ChildChore = toApprove["toApprove"] as! PFObject
         let child = ChildChore["child"] as! PFObject
-        let chore = ChildChore["chore"] as! PFObject
+//        let chore = ChildChore["chore"] as! PFObject
 
         // calculate new total
         let prevTotal = child["total"] as! Double
-        let amount = chore["amount"] as! Double
+        let amount = ChildChore["customAmount"] as! Double
         let newTotal = prevTotal + amount
 
         // update child's total in database and remove toApprove instance

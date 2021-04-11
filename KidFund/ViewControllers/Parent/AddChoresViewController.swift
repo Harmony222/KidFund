@@ -11,7 +11,6 @@ import AlamofireImage
 
 class AddChoresViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
 
-    
     var selectedChild = PFObject(className: "Children");
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var choreCollectionView: UICollectionView!
@@ -20,7 +19,6 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
     var numberOfCells: Int!
     var selectedChores = [PFObject]()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,13 +62,11 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
         cell.choreDescription.text = description
         cell.choreAmount.text = String(format: "$%.2f", amount)
         
-        
         let imageFile = chore["image"] as! PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
         cell.choreImageView.af.setImage(withURL: url)
         
-
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         
@@ -120,19 +116,41 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
         
         for selected in self.selectedChores {
             print(selected["description"] as! String)
-            let chore = PFObject(className: "ChildChores")
-            chore["child"] = self.selectedChild
-            chore["chore"] = selected
+            
+            
+            // check ChildChorse for duplicate
+            let query = PFQuery(className: "ChildChores")
+            query.whereKey("child", equalTo: selectedChild)
+            query.whereKey("chore", equalTo: selected)
+            
 
-            self.selectedChild.add(chore, forKey: "chores")
-            selectedChild.saveInBackground { (success, error) in
-                if success {
-                    print("child's chore added")
-                    
+            query.findObjectsInBackground { (childChores, error) in
+                if childChores!.count != 0 {
+                    print(childChores!)
+                    print("child/chore is duplicate, not added")
                 } else {
-                    print("error adding child's chore")
+                    // if no duplicates, add Child + Chore to table
+                    let chore = PFObject(className: "ChildChores")
+                    chore["child"] = self.selectedChild
+                    chore["chore"] = selected
+                    chore["customAmount"] = selected["amount"]
+                    chore.saveInBackground { (success, error) in
+                        if success {
+                            print("child's chore added")
+                            
+                        } else {
+                            print("error adding child's chore")
+                        }
+                    }
                 }
             }
+            
+
+
+            // add chore to child's array of chores ---DO I NEED THIS???????
+//            self.selectedChild.add(chore, forKey: "chores")
+            
+
         }
 //        choreCollectionView.indexPathsForSelectedItems?.forEach({ choreCollectionView.deselectItem(at: $0, animated: false) })
         selectedChores.removeAll()

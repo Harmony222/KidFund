@@ -14,6 +14,7 @@ class ChoreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var speakButton: UIButton!
     
     @IBOutlet weak var choreImageView: UIImageView!
+    @IBOutlet weak var editButton: UIButton!
     
 }
 

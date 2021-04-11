@@ -21,12 +21,13 @@ class ParentHomeViewController: UIViewController,  UICollectionViewDataSource, U
         super.viewDidLoad()
         childrenCollectionView.delegate = self
         childrenCollectionView.dataSource = self
-        
-        let layout = childrenCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumLineSpacing = 40
-        layout.minimumInteritemSpacing = 40
 
-        layout.itemSize = CGSize(width: 120, height: 120)
+//        let layout = childrenCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+
+//        layout.minimumLineSpacing = 40
+//        layout.minimumInteritemSpacing = 40
+//
+//        layout.itemSize = CGSize(width: 120, height: 120)
         // Do any additional setup after loading the view.
         checkForChoresToApprove()
         

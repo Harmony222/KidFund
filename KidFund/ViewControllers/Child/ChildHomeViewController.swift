@@ -17,57 +17,36 @@ class ChildHomeViewController: UIViewController {
     
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var greetingLabel: UILabel!
-    @IBOutlet weak var dollarsCentsLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(selectedChild["name"]!)
         let childName = selectedChild["name"] as! String
-        self.greetingText = "Hi " + childName + "!"
+        self.greetingText = " Hi " + childName + "!"
         greetingLabel.text = self.greetingText
         let total = selectedChild["total"] as! Double
-        let dollars = floor(total)
-        let dollarsStr = String(Int(dollars))
-        let cents = floor(total.truncatingRemainder(dividingBy: 1) * 100)
-        let centsStr = String(Int(cents))
-        self.fundsText = "You have " + dollarsStr + " dollars and " + centsStr + " cents!"
-//        dollarsCentsLabel.text = fundsString
-        totalLabel.text = "Total Funds: " + String(format: "$%.2f", total)
-        
-//        speak(greetingText + " " + fundsString)
 
-        
-//        let speechSynthesizer = AVSpeechSynthesizer()
-//        let speechUtterance: AVSpeechUtterance = AVSpeechUtterance(string: greetingText + " " + fundsString)
-//        speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.5
-//        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-//        speechSynthesizer.speak(speechUtterance)
-        // Do any additional setup after loading the view.
+        self.fundsText = "You have" + Utils.translateFunds(total)
+
+        totalLabel.text = " Total Funds: " + String(format: "$%.2f", total)
+    
     }
     
     @IBAction func greetingButton(_ sender: Any) {
-        speak(self.greetingText)
+        Utils.speak(self.greetingText)
     }
     
     @IBAction func totalFundsButton(_ sender: Any) {
-        speak(self.fundsText)
+        Utils.speak(self.fundsText)
     }
     
     @IBAction func earnMoneyButton(_ sender: Any) {
-        speak("Earn Money")
+        Utils.speak("Earn Money")
     }
     
     @IBAction func goalsButton(_ sender: Any) {
-        speak("Goals")
+        Utils.speak("Goals")
     }
-    
-    func speak(_ speakString: String) {
-        let speechSynthesizer = AVSpeechSynthesizer()
-        let speechUtterance: AVSpeechUtterance = AVSpeechUtterance(string: speakString)
-        speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.5
-        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        speechSynthesizer.speak(speechUtterance)
-    }
-    
+       
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

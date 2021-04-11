@@ -59,7 +59,16 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
         let url = URL(string: urlString)!
         cell.goalImageView.af.setImage(withURL: url)
         
-
+        if cell.isSelected {
+            //put border logic
+            cell.layer.borderColor = UIColor(named: "AppGreenBlue")?.cgColor
+            cell.layer.borderWidth = 2
+        } else {
+            // remove border
+            cell.layer.borderColor = UIColor.clear.cgColor
+            cell.layer.borderWidth = 2
+        }
+        
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         return cell
@@ -96,21 +105,37 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBAction func onAddSelectedGoalsButton(_ sender: Any) {
         for selected in self.selectedGoals {
             print(selected["description"] as! String)
-            let goal = PFObject(className: "ChildGoals")
-            goal["child"] = self.selectedChild
-            goal["goal"] = selected
+            
+            // check ChildGoals for duplicate
+            let query = PFQuery(className: "ChildGoals")
+            query.whereKey("child", equalTo: selectedChild)
+            query.whereKey("goal", equalTo: selected)
+            
 
-            self.selectedChild.add(goal, forKey: "goals")
-            selectedChild.saveInBackground { (success, error) in
-                if success {
-                    print("child's goal added")
-                    
+            query.findObjectsInBackground { (childGoals, error) in
+                if childGoals!.count != 0 {
+                    print(childGoals!)
+                    print("child/goal is duplicate, not added")
                 } else {
-                    print("error adding child's goal")
+                    // if no duplicates, add Child + Goal to table
+                    let goal = PFObject(className: "ChildGoals")
+                    goal["child"] = self.selectedChild
+                    goal["goal"] = selected
+                    goal["customAmount"] = selected["amount"]
+                    goal.saveInBackground { (success, error) in
+                        if success {
+                            print("child's goal added")
+                            
+                        } else {
+                            print("error adding child's goal")
+                        }
+                    }
                 }
             }
-            
         }
+        selectedGoals.removeAll()
+        goalsCollectionView.deselectAllItems(animated: true)
+        self.goalsCollectionView.reloadData()
     }
     /*
     // MARK: - Navigation

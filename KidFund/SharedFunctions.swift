@@ -51,4 +51,20 @@ class Utils {
         speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         speechSynthesizer.speak(speechUtterance)
     }
+    
+    static func translateFunds(_ total: Double) -> String {
+        let dollars = floor(total)
+        let dollarsStr = String(Int(dollars))
+        let cents = floor(total.truncatingRemainder(dividingBy: 1) * 100)
+        let centsStr = String(Int(cents))
+        return dollarsStr + " dollars and " + centsStr + " cents!"
+    }
+    
+    static func createAlert(_ message: String) -> UIAlertController {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        }))
+        return alert
+        
+    }
 }

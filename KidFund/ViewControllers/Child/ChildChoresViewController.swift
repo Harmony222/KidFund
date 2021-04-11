@@ -32,7 +32,7 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
     func getChores() {
         let query = PFQuery(className: "ChildChores")
         query.whereKey("child", equalTo: selectedChild)
-        query.includeKeys(["chore", "chore.description", "chore.amount", "chore.image"])
+        query.includeKeys(["chore", "chore.description", "chore.amount", "chore.image", "child", "child.name", "customAmount"])
         query.findObjectsInBackground { (chores, error) in
             if chores != nil {
                 self.childChores = chores!
@@ -52,7 +52,7 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
         let chore = ChildChore["chore"] as! PFObject
         
         let description = chore["description"] as! String
-        let amount = chore["amount"] as! Double
+        let amount = ChildChore["customAmount"] as! Double
 
         cell.choreDescription.text = description
         cell.choreAmount.text = String(format: "$%.2f", amount)
@@ -76,10 +76,16 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
         let ChildChore = self.childChores[indexpath1.item] as PFObject
         let chore = ChildChore["chore"] as! PFObject
         let description = chore["description"] as! String
-        Utils.speak(description)
+        let amount = ChildChore["customAmount"] as! Double
+        let amountText = "This will earn you" + Utils.translateFunds(amount)
+        Utils.speak(description + ". " + amountText)
 
    }
 
+    @IBAction func instructionsSpeakButton(_ sender: Any) {
+        Utils.speak("Select a task to complete it.")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let alertController = UIAlertController(title: "", message: "Complete this task?", preferredStyle: .alert)
         Utils.speak("Complete this task? Select no or yes.")
@@ -96,11 +102,8 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
             choreToApprove.saveInBackground { (success, error) in
                 if success {
                     print("child's chore sent for approval")
-                    let alert = UIAlertController(title: "", message: "Sent to your parent for approval!", preferredStyle: .alert)
+                    let alert = Utils.createAlert("Sent to your parent for approval!")
                     Utils.speak("Sent to your parent for approval!")
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                    NSLog("The \"OK\" alert occured.")
-                    }))
                     self.present(alert, animated: true, completion: nil)
                 } else {
                     print("error adding child/chore for approval")
