@@ -13,6 +13,7 @@
 		FF0DC70126221ADE00568B5A /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0DC70026221ADE00568B5A /* SharedFunctions.swift */; };
 		FF0DC70426221D7F00568B5A /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0DC70326221D7F00568B5A /* ProgressBar.swift */; };
 		FF2BF7EC26224C5500E955F1 /* EditChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2BF7EB26224C5500E955F1 /* EditChildViewController.swift */; };
+		FF385C0026236E7200C77E5B /* FeedbackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF385BFF26236E7200C77E5B /* FeedbackCollectionViewCell.swift */; };
 		FF518AFD2622A5A400D1B2DF /* CreateCustomGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF518AFC2622A5A400D1B2DF /* CreateCustomGoalViewController.swift */; };
 		FF780DE126226AF50082F698 /* EditChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF780DE026226AF50082F698 /* EditChoreViewController.swift */; };
 		FF8E964B26235166009BBE51 /* CreateCustomChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8E964A26235166009BBE51 /* CreateCustomChoreViewController.swift */; };
@@ -49,6 +50,7 @@
 		FF0DC70026221ADE00568B5A /* SharedFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctions.swift; sourceTree = "<group>"; };
 		FF0DC70326221D7F00568B5A /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		FF2BF7EB26224C5500E955F1 /* EditChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildViewController.swift; sourceTree = "<group>"; };
+		FF385BFF26236E7200C77E5B /* FeedbackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF518AFC2622A5A400D1B2DF /* CreateCustomGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomGoalViewController.swift; sourceTree = "<group>"; };
 		FF780DE026226AF50082F698 /* EditChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChoreViewController.swift; sourceTree = "<group>"; };
 		FF8E964A26235166009BBE51 /* CreateCustomChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomChoreViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				FFF49346262002530038F295 /* ChoreCollectionViewCell.swift */,
 				FFD1CAA92620CF7E004DE704 /* GoalCollectionViewCell.swift */,
 				FF087B51262150CA00395659 /* ApproveChoreTableViewCell.swift */,
+				FF385BFF26236E7200C77E5B /* FeedbackCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				FF8E964B26235166009BBE51 /* CreateCustomChoreViewController.swift in Sources */,
 				FF087B52262150CA00395659 /* ApproveChoreTableViewCell.swift in Sources */,
 				FFF493442620006A0038F295 /* AddChoresViewController.swift in Sources */,
+				FF385C0026236E7200C77E5B /* FeedbackCollectionViewCell.swift in Sources */,
 				FFACD654261FB75D00EC4ADB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

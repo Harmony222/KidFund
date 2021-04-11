@@ -11,7 +11,7 @@ import Parse
 class ApproveChoresViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var toApprove = [PFObject]()
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -19,8 +19,6 @@ class ApproveChoresViewController: UIViewController, UITableViewDelegate, UITabl
         
         tableView.delegate = self
         tableView.dataSource = self
-
-        
         checkForChoresToApprove()
     }
     
@@ -34,7 +32,6 @@ class ApproveChoresViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         toApprove.count
@@ -50,10 +47,16 @@ class ApproveChoresViewController: UIViewController, UITableViewDelegate, UITabl
         let childName = child["name"] as! String
         let description = chore["description"] as! String
         let amount = ChildChore["customAmount"] as! Double
-
+        let date = toApprove["date"] as! Date
+        
         cell.childNameLabel.text = childName
         cell.choreDescriptionLabel.text = description
         cell.choreAmountLabel.text = String(format: "$%.2f", amount)
+        
+        let localDateFormatter = DateFormatter()
+        localDateFormatter.dateStyle = .medium
+        print(localDateFormatter.string(from: date))
+        cell.dateLabel.text = "Date submitted: " + localDateFormatter.string(from: date)
         
         cell.approvalButton.tag = indexPath.row
         cell.approvalButton.addTarget(self, action: #selector(approvalButton), for: .touchUpInside)
@@ -68,12 +71,28 @@ class ApproveChoresViewController: UIViewController, UITableViewDelegate, UITabl
 
         let ChildChore = toApprove["toApprove"] as! PFObject
         let child = ChildChore["child"] as! PFObject
-
+        let chore = ChildChore["chore"] as! PFObject
+        
         // calculate new total
         let prevTotal = child["total"] as! Double
         let amount = ChildChore["customAmount"] as! Double
         let newTotal = prevTotal + amount
 
+        let childFeedback = PFObject(className: "ChildFeedback")
+        
+        childFeedback["child"] = child
+        childFeedback["amount"] = amount
+        childFeedback["description"] = chore["description"]
+        childFeedback["approved"] = true
+              
+        childFeedback.saveInBackground { (success, error) in
+            if success {
+                print("child feedback added!")
+            } else {
+                print("error adding child feedback")
+            }
+        }
+        
         // update child's total in database and remove toApprove instance
         child["total"] = newTotal
         child.saveInBackground()
@@ -95,6 +114,27 @@ class ApproveChoresViewController: UIViewController, UITableViewDelegate, UITabl
     @objc func denialButton(sender:UIButton) {
         let indexpath = IndexPath(row: sender.tag, section: 0)
         let toApprove = self.toApprove[indexpath.item] as PFObject
+        
+//        let ChildChore = toApprove["toApprove"] as! PFObject
+//        let child = ChildChore["child"] as! PFObject
+//        let chore = ChildChore["chore"] as! PFObject
+//
+//        let amount = ChildChore["customAmount"] as! Double
+
+//        let childFeedback = PFObject(className: "ChildFeedback")
+//        
+//        childFeedback["child"] = child
+//        childFeedback["amount"] = amount
+//        childFeedback["description"] = chore["description"]
+//        childFeedback["approved"] = false
+//              
+//        childFeedback.saveInBackground { (success, error) in
+//            if success {
+//                print("child feedback added!")
+//            } else {
+//                print("error adding child feedback")
+//            }
+//        }
         // remove DENIED chore from approval list
         toApprove.deleteInBackground { (success, error) in
             if success {

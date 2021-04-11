@@ -16,6 +16,7 @@ class ApproveChoreTableViewCell: UITableViewCell {
     @IBOutlet weak var approvalButton: UIButton!
     @IBOutlet weak var denialButton: UIButton!
     
+    @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -97,7 +97,9 @@ class ChildChoresViewController: UIViewController, UICollectionViewDataSource, U
             let ChildChore = self.childChores[indexPath.item] as PFObject
             let choreToApprove = PFObject(className: "ChoresToApprove")
             choreToApprove["toApprove"] = ChildChore
-
+            let date = Date()
+            print(date)
+            choreToApprove["date"] = date
 
             choreToApprove.saveInBackground { (success, error) in
                 if success {
