@@ -28,9 +28,16 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
         goalsCollectionView.dataSource = self
         self.goalsCollectionView.allowsMultipleSelection = true
         self.goalsCollectionView.allowsMultipleSelectionDuringEditing = true
-        
+                
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getGoals()
+    }
+    
+    func getGoals() {
         let query = PFQuery(className: "Goals")
-//        query.whereKeyDoesNotExist("child")
         query.includeKeys(["description", "amount", "image"])
         query.findObjectsInBackground { (goals, error) in
             if goals != nil {
@@ -137,15 +144,21 @@ class AddGoalsViewController: UIViewController, UICollectionViewDataSource, UICo
         goalsCollectionView.deselectAllItems(animated: true)
         self.goalsCollectionView.reloadData()
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "createGoalSegue" {
+            print("loading create Goal")
+            let createGoalViewController = segue.destination as! CreateCustomGoalViewController
+            createGoalViewController.selectedChild = selectedChild
+                      
+        }
     }
-    */
+    
 
 }
 

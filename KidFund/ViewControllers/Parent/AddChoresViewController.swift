@@ -113,21 +113,21 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
     
     
     @IBAction func onAddSelectedChoresButton(_ sender: Any) {
-        
+//        var duplicateFound = false
         for selected in self.selectedChores {
             print(selected["description"] as! String)
             
-            
-            // check ChildChorse for duplicate
+            // check ChildChores for duplicate
             let query = PFQuery(className: "ChildChores")
             query.whereKey("child", equalTo: selectedChild)
             query.whereKey("chore", equalTo: selected)
             
-
             query.findObjectsInBackground { (childChores, error) in
                 if childChores!.count != 0 {
                     print(childChores!)
                     print("child/chore is duplicate, not added")
+//                    duplicateFound = true
+
                 } else {
                     // if no duplicates, add Child + Chore to table
                     let chore = PFObject(className: "ChildChores")
@@ -137,22 +137,22 @@ class AddChoresViewController: UIViewController, UICollectionViewDataSource, UIC
                     chore.saveInBackground { (success, error) in
                         if success {
                             print("child's chore added")
-                            
+
                         } else {
                             print("error adding child's chore")
                         }
                     }
                 }
             }
-            
-
-
-            // add chore to child's array of chores ---DO I NEED THIS???????
-//            self.selectedChild.add(chore, forKey: "chores")
-            
-
+                     
         }
-//        choreCollectionView.indexPathsForSelectedItems?.forEach({ choreCollectionView.deselectItem(at: $0, animated: false) })
+        // doesn't work here, duplicateFound evaluates to False since this code runs before the findObjectsInBackground finishes.
+//        if duplicateFound == true {
+//            print("test")
+//            let alert = Utils.createAlert("Duplicate tasks detected, duplicates not added.")
+//            self.present(alert, animated: true, completion: nil)
+//        }
+
         selectedChores.removeAll()
         choreCollectionView.deselectAllItems(animated: true)
         self.choreCollectionView.reloadData()

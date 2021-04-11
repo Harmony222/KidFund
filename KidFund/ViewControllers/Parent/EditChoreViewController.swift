@@ -1,5 +1,5 @@
 //
-//  EditGoalViewController.swift
+//  EditChoreViewController.swift
 //  KidFund
 //
 //  Created by Harmony Scarlet on 4/10/21.
@@ -8,28 +8,29 @@
 import UIKit
 import Parse
 
-class EditGoalViewController: UIViewController {
+class EditChoreViewController: UIViewController {
     
-    var childGoal = PFObject(className: "ChildGoals");
+    var childChore = PFObject(className: "ChildChore");
 
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskTitleLabel: UILabel!
     @IBOutlet weak var amountField: UITextField!
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let child = childGoal["child"] as! PFObject
+        let child = childChore["child"] as! PFObject
         let childName = child["name"] as! String
-        print(childName)
         titleLabel.text = childName
         
-        let goal = childGoal["goal"] as! PFObject
-        let description = goal["description"] as! String
+        let chore = childChore["chore"] as! PFObject
+        let description = chore["description"] as! String
         taskTitleLabel.text = description
-        let amount = childGoal["customAmount"] as! Double
-        print(amount, description)
-        amountField.text = String(format: "%.2f", amount)
+        let amount = childChore["customAmount"] as! Double
 
+        amountField.text = String(format: "%.2f", amount)
+        
+        
+        // Do any additional setup after loading the view.
     }
     
     @IBAction func onCancelButton(_ sender: Any) {
@@ -44,21 +45,22 @@ class EditGoalViewController: UIViewController {
         }
         print(newAmount)
         
-        childGoal["customAmount"] = newAmount
-        childGoal.saveInBackground { (success, error) in
+        childChore["customAmount"] = newAmount
+        childChore.saveInBackground { (success, error) in
             if success {
-                print("childGoal updated!")
+                print("childChore updated!")
                 self.dismiss(animated: true, completion: nil)
             } else {
-                print("error updating childGoal")
+                print("error updating childChore")
             }
         }
+        
     }
     
     @IBAction func onDeleteButton(_ sender: Any) {
-        childGoal.deleteInBackground() { (success, error) in
+        childChore.deleteInBackground() { (success, error) in
             if success {
-                let alert = UIAlertController(title: "", message: "Goal deleted.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "", message: "Task deleted.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                     self.dismiss(animated: true, completion: nil)
                 }))
@@ -66,8 +68,6 @@ class EditGoalViewController: UIViewController {
                 
             }
         }
-        
-    
     }
     /*
     // MARK: - Navigation

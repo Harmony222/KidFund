@@ -31,23 +31,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func addChildButton(_ sender: Any) {
-        let child = PFObject(className: "Children")
-        
-        child["name"] = "Piper"
-        child["age"] = 10
-        child["parent"] = PFUser.current()!
-        child["total"] = 20
-        
-        child.saveInBackground { (success, error) in
-            if success {
-                print("child added!")
-            } else {
-                print("error adding child")
-            }
-        }
-    }
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

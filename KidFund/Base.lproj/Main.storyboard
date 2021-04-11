@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="6Rg-ma-QZg">
             <objects>
-                <viewController id="6p4-yK-6KI" customClass="LoginViewController" customModule="KidFund" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="6p4-yK-6KI" customClass="LoginViewController" customModule="KidFund" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JSQ-cM-Mb1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,14 +67,6 @@
                                 <state key="normal" title="Create Account"/>
                                 <connections>
                                     <segue destination="mMp-OK-70n" kind="presentation" identifier="createProfileSegue" id="HrX-Pc-9ow"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1I-SE-jg9">
-                                <rect key="frame" x="149" y="711" width="67" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Child"/>
-                                <connections>
-                                    <action selector="addChildButton:" destination="6p4-yK-6KI" eventType="touchUpInside" id="1ci-bn-xPu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -187,7 +179,13 @@
                             <constraint firstItem="61J-wB-Fwg" firstAttribute="top" secondItem="a4g-bn-lUS" secondAttribute="bottom" constant="42" id="i5W-DN-Apx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eGr-5f-G75"/>
+                    <navigationItem key="navigationItem" id="eGr-5f-G75">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="DvL-rD-L6u">
+                            <connections>
+                                <action selector="onLogoutButton:" destination="7Lt-9w-iV4" id="gzZ-A2-WJX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="childrenCollectionView" destination="FN5-IQ-Phg" id="x1Y-Pn-v6B"/>
                         <outlet property="greetingLabel" destination="a4g-bn-lUS" id="FmE-Ig-e0l"/>
@@ -493,6 +491,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Delete Task From Child's Task List"/>
+                                <connections>
+                                    <action selector="onDeleteButton:" destination="fqy-fw-RBU" eventType="touchUpInside" id="foZ-OR-j2K"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6K2-V9-9GW">
                                 <rect key="frame" x="0.0" y="44" width="414" height="40"/>
@@ -825,7 +826,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SL2-2B-TWm">
-                                        <rect key="frame" x="4" y="4.5" width="406" height="31.5"/>
+                                        <rect key="frame" x="4" y="4.5" width="406" height="31"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -992,7 +993,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltk-Vf-J8I">
-                                        <rect key="frame" x="4" y="4.5" width="406" height="31.5"/>
+                                        <rect key="frame" x="4" y="4.5" width="406" height="31"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1281,7 +1282,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="his-ci-Dae">
-                                <rect key="frame" x="23.5" y="136" width="367" height="36"/>
+                                <rect key="frame" x="30.5" y="136" width="353" height="36"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLZ-op-3GS">
                                         <rect key="frame" x="0.0" y="0.0" width="84" height="36"/>
@@ -1292,15 +1293,15 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYm-6g-Ddw">
-                                        <rect key="frame" x="128" y="0.0" width="104" height="36"/>
+                                        <rect key="frame" x="128" y="0.0" width="90" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Add Chores"/>
+                                        <state key="normal" title="Add Tasks"/>
                                         <connections>
                                             <segue destination="JC9-iC-PVy" kind="show" identifier="addChoresSegue" id="Xgx-jO-9Lx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZm-zY-B6N">
-                                        <rect key="frame" x="276" y="0.0" width="91" height="36"/>
+                                        <rect key="frame" x="262" y="0.0" width="91" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Add Goals"/>
                                         <connections>
@@ -1638,8 +1639,16 @@
                                     <constraint firstAttribute="trailing" secondItem="7YJ-lx-eno" secondAttribute="trailing" constant="4" id="vnx-tt-xJg"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmX-Zf-LZa">
+                                <rect key="frame" x="229" y="145" width="177" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Create Custom Goal"/>
+                                <connections>
+                                    <segue destination="hIg-rm-T9s" kind="show" identifier="createGoalSegue" id="NrN-OS-HtR"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNc-WZ-YJ2">
-                                <rect key="frame" x="121" y="144" width="172" height="36"/>
+                                <rect key="frame" x="8" y="145" width="172" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Selected Goals"/>
                                 <connections>
@@ -1651,14 +1660,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mpY-dI-wZQ" firstAttribute="trailing" secondItem="yvL-Xk-lKI" secondAttribute="trailing" id="0bd-6q-DIe"/>
+                            <constraint firstItem="zmX-Zf-LZa" firstAttribute="top" secondItem="pJn-oI-Dgh" secondAttribute="bottom" constant="17" id="1Wn-s3-6BC"/>
+                            <constraint firstItem="mpY-dI-wZQ" firstAttribute="top" secondItem="NNc-WZ-YJ2" secondAttribute="bottom" constant="21" id="7EB-3y-2kW"/>
                             <constraint firstItem="pJn-oI-Dgh" firstAttribute="top" secondItem="yvL-Xk-lKI" secondAttribute="top" id="GGY-wA-RLj"/>
+                            <constraint firstItem="NNc-WZ-YJ2" firstAttribute="top" secondItem="pJn-oI-Dgh" secondAttribute="bottom" constant="17" id="IR7-9r-Nje"/>
                             <constraint firstItem="pJn-oI-Dgh" firstAttribute="leading" secondItem="yvL-Xk-lKI" secondAttribute="leading" id="Pg2-Tu-0uS"/>
                             <constraint firstItem="pJn-oI-Dgh" firstAttribute="trailing" secondItem="yvL-Xk-lKI" secondAttribute="trailing" id="XUt-ns-nP5"/>
-                            <constraint firstItem="NNc-WZ-YJ2" firstAttribute="top" secondItem="pJn-oI-Dgh" secondAttribute="bottom" constant="16" id="Z9q-Zj-d6o"/>
+                            <constraint firstItem="yvL-Xk-lKI" firstAttribute="trailing" secondItem="zmX-Zf-LZa" secondAttribute="trailing" constant="8" id="YDu-di-fmV"/>
                             <constraint firstAttribute="bottom" secondItem="mpY-dI-wZQ" secondAttribute="bottom" id="dNx-Nq-zJ8"/>
-                            <constraint firstItem="mpY-dI-wZQ" firstAttribute="top" secondItem="NNc-WZ-YJ2" secondAttribute="bottom" constant="22" id="ePK-Re-jGl"/>
+                            <constraint firstItem="mpY-dI-wZQ" firstAttribute="top" secondItem="zmX-Zf-LZa" secondAttribute="bottom" constant="21" id="eQx-Nl-Wph"/>
+                            <constraint firstItem="NNc-WZ-YJ2" firstAttribute="leading" secondItem="yvL-Xk-lKI" secondAttribute="leading" constant="8" id="i0O-2U-are"/>
                             <constraint firstItem="mpY-dI-wZQ" firstAttribute="leading" secondItem="yvL-Xk-lKI" secondAttribute="leading" id="ieo-lI-MCt"/>
-                            <constraint firstItem="NNc-WZ-YJ2" firstAttribute="centerX" secondItem="dZ1-ct-WLD" secondAttribute="centerX" id="xEE-55-L6g"/>
+                            <constraint firstItem="zmX-Zf-LZa" firstAttribute="leading" secondItem="NNc-WZ-YJ2" secondAttribute="trailing" constant="49" id="isV-iv-7px"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ysf-vk-bSf"/>
@@ -1670,6 +1683,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6H-XU-aLT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="719" y="4002"/>
+        </scene>
+        <!--Create Custom Goal View Controller-->
+        <scene sceneID="ZDM-5H-zPZ">
+            <objects>
+                <viewController id="hIg-rm-T9s" customClass="CreateCustomGoalViewController" customModule="KidFund" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IPq-80-s1h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2s-YR-7YL">
+                                <rect key="frame" x="50" y="169" width="88" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rw-a3-aPs">
+                                <rect key="frame" x="50" y="222" width="60" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-ZL-YfO">
+                                <rect key="frame" x="151" y="162" width="217" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5KR-by-VYQ">
+                                <rect key="frame" x="271" y="222" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjG-4B-291">
+                                <rect key="frame" x="50" y="296" width="104" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Create Goal"/>
+                                <connections>
+                                    <action selector="onCreateGoalButton:" destination="hIg-rm-T9s" eventType="touchUpInside" id="jMg-x2-hc0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9mD-vC-Ebq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eIC-NA-BmU"/>
+                    <connections>
+                        <outlet property="amountField" destination="5KR-by-VYQ" id="G4F-De-Phk"/>
+                        <outlet property="descriptionField" destination="FgE-ZL-YfO" id="5cU-Us-5X5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2YG-SO-kqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1428.985507246377" y="4001.7857142857142"/>
         </scene>
         <!--Add Chores View Controller-->
         <scene sceneID="Ael-yV-FS8">
@@ -1757,9 +1827,9 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRT-m9-oAJ">
-                                <rect key="frame" x="114.5" y="144" width="185" height="36"/>
+                                <rect key="frame" x="121" y="144" width="172" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Add Selected Chores"/>
+                                <state key="normal" title="Add Selected Tasks"/>
                                 <connections>
                                     <action selector="onAddSelectedChoresButton:" destination="JC9-iC-PVy" eventType="touchUpInside" id="LbV-6r-zut"/>
                                 </connections>
@@ -1850,6 +1920,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Delete Goal From Child's Goal List"/>
+                                <connections>
+                                    <action selector="onDeleteButton:" destination="MLb-Gp-BGx" eventType="touchUpInside" id="mdP-2f-aoG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCZ-Ah-usi">
                                 <rect key="frame" x="144" y="253" width="126" height="36"/>
