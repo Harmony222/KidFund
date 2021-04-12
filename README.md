@@ -19,3 +19,5 @@ Kid Fun!d is an iOS app to help young children learn about finances. The app enc
 Created for [BeaverHacks Spring 2021 Hackathon](https://devpost.com/software/kid-fun-d) (Oregon State Universtity)
 
 <img src='https://media.giphy.com/media/HrDG9NQVGoLtDniGP1/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+<img src='https://media.giphy.com/media/NfxpAlVnv2BCDpM2fI/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
